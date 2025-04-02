@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Profile</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .container { margin-top: 50px; }
+        img { border-radius: 50%; width: 150px; height: 150px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Welcome, <span th:text="${name}">User</span>!</h2>
+    <p>Email: <span th:text="${email}">user@example.com</span></p>
+
+    <div th:if="${picture}">
+        <img th:src="${picture}" alt="Google Profile Picture">
+    </div>
+
+    <br>
+    <a href="/logout">Logout</a>
+</div>
+
+</body>
+</html>

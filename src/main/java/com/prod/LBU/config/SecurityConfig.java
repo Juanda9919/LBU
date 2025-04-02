@@ -1,5 +1,6 @@
 package com.prod.LBU.config;
 
+import com.prod.LBU.services.CustomOAuth2UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -25,15 +26,16 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http, CustomOAuth2UserService customOAuth2UserService) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/register").permitAll()
+                        .requestMatchers("/auth/register","/api/get","/").permitAll()
                         .anyRequest().authenticated()
                 )
-                .formLogin(withDefaults())  // Usa un login basado en formulario en lugar de httpBasic()
-                .csrf(csrf -> csrf.disable()); // Deshabilita CSRF si es necesario
+                .formLogin(withDefaults())
+                .oauth2Login(withDefaults());
 
         return http.build();
     }
+
 }
