@@ -16,4 +16,8 @@ public class ViewController {
         model.addAttribute("picture", oAuth2AuthenticationToken.getPrincipal().getAttribute("picture"));
         return "user-profile";
     }
+
+    //TODO tienes que crear otro view con un template que permita a la persona que se está registrando llenar el resto de sus datos
+    //TODO averigua cómo despues de hacer un register podemos conectar un boton el front con la logica de salvar archivos
+    //TODO deja de utilizar H2 vuelve a descargar postgres y crea una base de datos seria.
 }
