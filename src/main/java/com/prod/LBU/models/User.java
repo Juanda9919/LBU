@@ -31,6 +31,10 @@ public class User {
     @Column(unique = true, nullable = false)
     private String email;
 
+    private String name;
+    private String phone;
+    private String address;
+
     @ElementCollection(fetch = FetchType.EAGER)
     private Set<String> roles;
 }

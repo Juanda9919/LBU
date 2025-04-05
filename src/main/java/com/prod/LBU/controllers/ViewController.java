@@ -24,10 +24,9 @@ public class ViewController {
         return "complete-profile";
     }
 
-    //TODO tienes que crear otro view con un template que permita a la persona que se está registrando llenar el resto de sus datos
-    //ya casi terminas recuerda que tienes que arreglar el .html
 
 
-    //TODO averigua cómo despues de hacer un register podemos conectar un boton el front con la logica de salvar archivos
+    //TODO averigua cómo despues de hacer un register podemos conectar un boton el front con la logica de salvar archivos: update tenemos que poder hacer el register. Prueba en postman a ver que pasa.
+
     //TODO deja de utilizar H2 vuelve a descargar postgres y crea una base de datos seria.
 }
