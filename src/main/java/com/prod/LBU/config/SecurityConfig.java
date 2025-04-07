@@ -4,6 +4,7 @@ import com.prod.LBU.security.CustomOAuth2SuccessHandler;
 import com.prod.LBU.services.CustomOAuth2UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -32,13 +33,14 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/register","/api/get","/").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
+                        .requestMatchers("/", "/api/get").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(withDefaults())
                 .oauth2Login(oauth2 -> oauth2
                         .userInfoEndpoint(userInfo -> userInfo.userService(customOAuth2UserService))
-                        .successHandler(customOAuth2SuccessHandler) // 👈 Aquí está la clave
+                        .successHandler(customOAuth2SuccessHandler)
                 );
 
         return http.build();
